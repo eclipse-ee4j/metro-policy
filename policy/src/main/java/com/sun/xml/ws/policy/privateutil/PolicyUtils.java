@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 1997, 2019 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 1997, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -68,8 +68,8 @@ public final class PolicyUtils {
          */
         public static String getCallerMethodName() {
             String result = getStackMethodName(5);
-            if (result.equals("invoke0")) {
-                // We are likely running on Mac OS X, which returns a shorter stack trace
+            if (result.equals("invoke0") || result.equals("invoke")) {
+                // We are likely running on Mac OS X or Java 21, which returns a shorter stack trace
                 result = getStackMethodName(4);
             }
             return result;
